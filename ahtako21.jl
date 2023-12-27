@@ -1,5 +1,5 @@
 function isborder(side)
-    if side == :top || side == :bottom
+    if side == Nord || side == Sud
         return true
     else
         return false

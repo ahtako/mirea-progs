@@ -25,21 +25,21 @@ function find_largest_rectangle(robot)
 end
 
 function calculate_perimeter(rectangle)
-    top_left = rectangle[1]
-    bottom_right = rectangle[2]
+    Nord_ost = rectangle[1]
+    Sud_est = rectangle[2]
     
-    return 2 * (bottom_right[1] - top_left[1] + bottom_right[2] - top_left[2])
+    return 2 * (Sud_est[1] - Nord_ost[1] + Sud_est[2] - Nord_ost[2])
 end
 
 function calculate_average_temperature(robot, rectangle)
-    top_left = rectangle[1]
-    bottom_right = rectangle[2]
+    Nord_ost = rectangle[1]
+    Sud_est = rectangle[2]
     perimeter_temperature = 0
     perimeter_cells = 0
     
-    for i in top_left[1]:bottom_right[1]
-        for j in top_left[2]:bottom_right[2]
-            if i == top_left[1] || i == bottom_right[1] || j == top_left[2] || j == bottom_right[2]
+    for i in Nord_ost[1]:Sud_est[1]
+        for j in Nord_ost[2]:Sud_est[2]
+            if i == Nord_ost[1] || i == Sud_est[1] || j == Nord_ost[2] || j == Sud_est[2]
                 perimeter_temperature += robot.temperature(i, j)
                 perimeter_cells += 1
             end

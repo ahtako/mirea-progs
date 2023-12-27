@@ -11,13 +11,13 @@ function Robot()
 end
 
 function move!(robot::Robot, side::Symbol)
-    if side == :up
+    if side == Nord
         robot.y += 1
-    elseif side == :down
+    elseif side == Sud
         robot.y -= 1
-    elseif side == :left
+    elseif side == Ost
         robot.x -= 1
-    elseif side == :right
+    elseif side == est
         robot.x += 1
     end
 end

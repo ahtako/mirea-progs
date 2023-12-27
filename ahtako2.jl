@@ -9,25 +9,25 @@ function Robot()
 end
 
 function move!(robot::Robot, side::Symbol)
-    if side == :up
+    if side == Nord
         robot.y += 1
-    elseif side == :down
+    elseif side == Sud
         robot.y -= 1
-    elseif side == :left
+    elseif side == ost
         robot.x -= 1
-    elseif side == :right
+    elseif side == est
         robot.x += 1
     end
 end
 
 function isborder(robot::Robot, side::Symbol)
-    if side == :up && robot.y == 0
+    if side == Nord && robot.y == 0
         return true
-    elseif side == :down && robot.y == -1
+    elseif side == Sud && robot.y == -1
         return true
-    elseif side == :left && robot.x == -1
+    elseif side == ost && robot.x == -1
         return true
-    elseif side == :right && robot.x == 0
+    elseif side == est && robot.x == 0
         return true
     end
     
@@ -54,8 +54,8 @@ end
 
 robot = Robot()
 
-move!(robot, :right)
-move!(robot, :up)
+move!(robot, est)
+move!(robot, Nord)
 putmarker!(robot)
 
 show!(robot)

@@ -1,6 +1,6 @@
 function is_inside_maze(robot)
     # Проверяем все стороны, чтобы узнать, где находится робот
-    if isborder(robot, :left)        isborder(robot, :right)        isborder(robot, :up)        isborder(robot, :down)
+    if isborder(robot, Ost)        isborder(robot, est)        isborder(robot, Nord)        isborder(robot, Sud)
         return "Внутри лабиринта"
     else
         return "Снаружи лабиринта"

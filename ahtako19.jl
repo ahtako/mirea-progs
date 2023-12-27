@@ -1,25 +1,25 @@
 function isborder(robot::Robot, side::Symbol, field_width::Int, field_height::Int, partitions::Array{Tuple{Int, Int}})
     x = robot.x
     y = robot.y
-    if side == :up && y == field_height-1
+    if side == Nord && y == field_height-1
         return true
-    elseif side == :down && y == 0
+    elseif side == Sud && y == 0
         return true
-    elseif side == :left && x == 0
+    elseif side == ost && x == 0
         return true
-    elseif side == :right && x == field_width-1
+    elseif side == est && x == field_width-1
         return true
     end
     
     for partition in partitions
         px, py = partition
-        if side == :up && y == py-1 && x >= px && x <= px+1
+        if side == Nord && y == py-1 && x >= px && x <= px+1
             return true
-        elseif side == :down && y == py && x >= px && x <= px+1
+        elseif side == Sud && y == py && x >= px && x <= px+1
             return true
-        elseif side == :left && x == px && y >= py && y <= py+1
+        elseif side == ost && x == px && y >= py && y <= py+1
             return true
-        elseif side == :right && x == px+1 && y >= py && y <= py+1
+        elseif side == est && x == px+1 && y >= py && y <= py+1
             return true
         end
     end
@@ -32,25 +32,25 @@ function place_markers(robot::Robot, n::Int, field_width::Int, field_height::Int
         for j = 0:field_width-1
             if (i ÷ n) % 2 == 0
                 if (j ÷ n) % 2 == 0
-                    move!(robot, :right)
+                    move!(robot, est)
                     putmarker!(robot)
                 else
-                    move!(robot, :right)
+                    move!(robot, est)
                 end
             else
                 if (j ÷ n) % 2 == 0
-                    move!(robot, :left)
+                    move!(robot, ost)
                 else
-                    move!(robot, :left)
+                    move!(robot, ost)
                     putmarker!(robot)
                 end
             end
         end
         if i != field_height-1
-            if isborder(robot, :up, field_width, field_height, partitions)
-                move!(robot, :right)
+            if isborder(robot, Nord, field_width, field_height, partitions)
+                move!(robot, est)
             else
-                move!(robot, :up)
+                move!(robot, Nord)
             end
         end
     end

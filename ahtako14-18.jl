@@ -47,7 +47,7 @@ function place_markers(robot::Robot, n::Int, field_width::Int, field_height::Int
             end
         end
         if i != field_height-1
-            if isborder(robot, :up, field_width, field_height, partitions)
+            if isborder(robot, Nord, field_width, field_height, partitions)
                 move!(robot, est)
             else
                 move!(robot, Nord)

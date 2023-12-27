@@ -21,18 +21,18 @@ function zebra_mark(r::Robot, along_side::String, across_side::String, num_passe
 end
 
 function opposite_direction(direction::String)
-    if direction == "forward"
-        return "backward"
-    elseif direction == "backward"
-        return "forward"
-    elseif direction == "right"
-        return "left"
-    elseif direction == "left"
-        return "right"
+    if direction == Nord
+        return Sud
+    elseif direction == Sud
+        return Nord
+    elseif direction == est
+        return ost
+    elseif direction == ost
+        return est
     end
 end
 
 # Пример использования:
 robot = Robot()
-zebra_mark(robot, "forward", "right", 3, 2)
+zebra_mark(robot, Nord, est, 3, 2)
 robot.show!()

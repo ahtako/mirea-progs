@@ -11,13 +11,13 @@ function Robot()
 end
 
 function move!(robot::Robot, side::Symbol)
-    if side == :up
+    if side == Nord
         robot.y += 1
-    elseif side == :down
+    elseif side == Sud
         robot.y -= 1
-    elseif side == :left
+    elseif side == ost
         robot.x -= 1
-    elseif side == :right
+    elseif side == est
         robot.x += 1
     end
 end
@@ -71,25 +71,25 @@ function place_markers(robot::Robot, n::Int, field_width::Int, field_height::Int
         for j = 0:field_width-1
             if (i ÷ n) % 2 == 0
                 if (j ÷ n) % 2 == 0
-                    move!(robot, :right)
+                    move!(robot, ost)
                     putmarker!(robot)
                 else
-                    move!(robot, :right)
+                    move!(robot, est)
                 end
             else
                 if (j ÷ n) % 2 == 0
-                    move!(robot, :left)
+                    move!(robot, ost)
                 else
-                    move!(robot, :left)
+                    move!(robot, ost)
                     putmarker!(robot)
                 end
             end
         end
         if i != field_height-1
-            if isborder(robot, :up)
-                move!(robot, :right)
+            if isborder(robot, Nord)
+                move!(robot, est)
             else
-                move!(robot, :up)
+                move!(robot, Nord)
             end
         end
     end
